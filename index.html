@@ -58,18 +58,37 @@
       #submit:hover {
         background-color: #21867a; /* Darker color on hover */
       }
+      
+      #success-message {
+        display: none;
+        color: #2a9d8f; /* Success message text color */
+      }
     </style>
   </head>
   <body>
     <div id="app"></div>
     <div class="container">
-      <form method="post" action="" name="contact-form">
+      <form method="post" action="#" name="contact-form" onsubmit="return submitForm();">
         <h4>Confession form</h4>
         <textarea name="message" rows="7" placeholder="Your Confession"></textarea>
         <input type="submit" value="Submit" id="submit">
       </form>
+      <p id="success-message">Successfully submitted!</p>
     </div>
   
     <script type="module" src="/main.js"></script>
+    <script>
+      function submitForm() {
+        // Handle form submission, e.g., send data to the server
+        // You can use JavaScript to perform an AJAX request or other actions here.
+        
+        // For this example, we'll simply show the success message and prevent the form from submitting.
+        document.getElementById("success-message").style.display = "block";
+        
+        // Prevent the form from submitting and reloading the page.
+        return false;
+      }
+    </script>
   </body>
 </html>
+
