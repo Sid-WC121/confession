@@ -53,22 +53,51 @@
         }
 
         .swiper-container {
+            position: relative; /* Added this to make sure arrows are positioned relative to the container */
             width: 100%;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .swiper-slide {
             background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 20px;
             width: 80%;
             max-width: 400px;
             margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(15, 15, 15, 0.3), 0 -5px 15px rgba(15, 15, 15, 0.3);
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            position: absolute;
+            top: 65%; /* Adjust the vertical position */
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: #2a9d8f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .swiper-button-next {
+            right: 5px; 
+        }
+
+        .swiper-button-prev {
+            left: 5px;
         }
 
         .card__text {
             color: #9a9a9a;
             text-align: center;
+            display: flex;
+            align-items: center;
         }
 
         textarea {
@@ -92,6 +121,7 @@
             width: 100%;
             box-sizing: border-box;
         }
+
         #submit:hover {
             background-color: #21867a;
         }
@@ -100,79 +130,100 @@
             display: none;
             color: #2a9d8f;
         }
+
         #smessage {
             background-color: #1a1a1a;
             color: #878787;
+            font-family: 'Times New Roman';
         }
+        #samessage {
+            background-color: #1a1a1a;
+            color: #878787;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
         form {
             text-align: center;
         }
 
         h4 {
-            color: #d9d8d8;
+            color: #a9a3a3;
+            font-family: Georgia, 'Times New Roman', Times, serif;
         }
-
     </style>
+
+    <!-- Paste the Google Fonts link here -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Your+Selected+Font&display=swap">
 </head>
+
 <body>
-<div id="app"></div>
-<div class="container2">
-    <div class="container1">
-        <p id="smessage">Welcome to the realm of secrets and revelations, FAREWELL WHISPERS, where whispered confessions find a home. Here, anonymity dances with honesty, creating a symphony of untold stories.</p>
-    </div>
-</div>
-<div class="container">
-    <form method="post" action="#" name="contact-form" onsubmit="return submitForm();">
-        <h4>WHISPERER - form</h4>
-        <textarea name="message" rows="7" placeholder="In this enigmatic sanctuary, masks are our only dress code. No personal information – just pure, unadulterated secrets.Your Confession"></textarea>
-        <input type="submit" value="Submit" id="submit">
-    </form>
-    <p id="success-message">Successfully submitted!</p>
-</div>
-<div class="container3">
-    <section class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit veritatis labore provident non tempora odio est sunt, ipsum</p>
-            </div>
-            <div class="swiper-slide">
-                <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit veritatis labore provident non tempora odio est sunt, ipsum</p>
-            </div>
-            <div class="swiper-slide">
-                <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit veritatis labore provident non tempora odio est sunt, ipsum</p>
-            </div>
+    <div id="app"></div>
+    <p id="samessage"> <b>FAREWELL WHISPERS</b></p>
+    <div class="container2">
+        <div class="container1">
+            <p id="smessage">Welcome to the realm of secrets and revelations,where whispered confessions find a home. Here, anonymity dances with honesty, creating a symphony of untold stories.</p>
         </div>
-    </section>
-</div>
+    </div>
+    <div class="container">
+        <form method="post" action="#" name="contact-form" onsubmit="return submitForm();">
+            <h4>WHISPERINGS</h4>
+            <textarea name="message" rows="7"
+                placeholder="In this enigmatic sanctuary, masks are our only dress code. No personal information – just pure, unadulterated secrets. Your Confession"></textarea>
+            <input type="submit" value="Submit" id="submit">
+        </form>
+        <p id="success-message">Successfully submitted!</p>
+    </div>
+    <div class="container3">
+        <section class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit veritatis labore provident non tempora odio est sunt, ipsum</p>
+                </div>
+                <div class="swiper-slide">
+                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit veritatis labore provident non tempora odio est sunt, ipsum</p>
+                </div>
+                <div class="swiper-slide">
+                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit veritatis labore provident non tempora odio est sunt, ipsum</p>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </section>
+    </div>
 
-<script type="module" src="/main.js"></script>
-<script>
-    function submitForm() {
-        document.getElementById("success-message").style.display = "block";
-        return false;
-    }
-</script>
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="module" src="/main.js"></script>
+    <script>
+        function submitForm() {
+            document.getElementById("success-message").style.display = "block";
+            return false;
+        }
+    </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 300,
-            modifier: 1,
-            slideShadows: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-        },
-    });
-</script>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows: false,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: ".swiper-pagination",
+            },
+        });
+    </script>
 </body>
+
 </html>
