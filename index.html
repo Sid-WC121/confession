@@ -135,11 +135,13 @@
             background-color: #1a1a1a;
             color: #878787;
             font-family: 'Times New Roman';
+            text-align: center;
         }
         #samessage {
             background-color: #1a1a1a;
             color: #878787;
             font-family: 'Times New Roman', Times, serif;
+            
         }
 
         form {
@@ -150,6 +152,74 @@
             color: #a9a3a3;
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
+        h2 {
+            color: #a9a3a3;
+            font-family:Times, serif;
+            text-align: center;
+        }
+        /* Theme Toggle Button Styles */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2a9d8f;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2a9d8f;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
     </style>
 
     <!-- Paste the Google Fonts link here -->
@@ -158,8 +228,14 @@
 
 <body>
     <div id="app"></div>
-    <p id="samessage"> <b>FAREWELL WHISPERS</b></p>
+    <div class="theme-toggle">
+      <label class="switch">
+          <input type="checkbox" id="toggle-theme">
+          <span class="slider round"></span>
+      </label>
+    </div>
     <div class="container2">
+    <p id="samessage"> <h2>FAREWELL WHISPERS</h2></p>
         <div class="container1">
             <p id="smessage">Welcome to the realm of secrets and revelations,where whispered confessions find a home. Here, anonymity dances with honesty, creating a symphony of untold stories.</p>
         </div>
@@ -190,7 +266,11 @@
             <div class="swiper-button-next"></div>
         </section>
     </div>
-
+    <div><p style="position: fixed; bottom: 10px; right: 10px; color: #9a9a9a;">
+      <h5 style="color: #6d6666;"> With ❤️ by <a href="https://www.linkedin.com/in/sid-wc121" target="_blank" style="color: #9a9a9a; text-decoration: none;"><b>Sid-WC121</b></a></h5>
+    </p></div>
+    
+    
     <script type="module" src="/main.js"></script>
     <script>
         function submitForm() {
@@ -201,6 +281,60 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
+    <script>
+      // JavaScript to handle theme toggle
+      const container = document.querySelector('.container');
+      const container1 = document.querySelector('.container1');
+      const container2 = document.querySelector('.container2');
+      const container3 = document.querySelector('.container3');
+      const swiperContainer = document.querySelector(".mySwiper");
+      const swiperSlide = document.querySelector(".swiper-slide");
+      const Mes = document.querySelector("#smessage");
+      const themeToggle = document.getElementById("toggle-theme");
+      const Textr = document.querySelector('textarea');
+      themeToggle.addEventListener("change", function () {
+          if (this.checked) {
+              // Dark theme
+              document.body.style.backgroundColor = "#1a1a1a";
+              document.body.style.color = "#fff";
+              container.style.backgroundColor = "#333";
+              container1.style.backgroundColor = "#1a1a1a";
+              container2.style.backgroundColor = "#1a1a1a";
+              container3.style.backgroundColor = "#1a1a1a";
+              swiperContainer.style.backgroundColor = "#1a1a1a";
+              swiperSlide.style.backgroundColor = "#333";
+              Textr.style.backgroundColor = "#2c2b2b";
+              Mes.style.backgroundColor = "#1a1a1a";
+              swiperContainer.style.boxShadow = "0 5px 15px rgba(15, 15, 15, 0.3), 0 -5px 15px rgba(15, 15, 15, 0.3)";
+              const swiperSlides = document.querySelectorAll(".swiper-slide");
+              swiperSlides.forEach((slide) => {
+                  slide.style.backgroundColor = "#333"; // Adjust to your desired light theme color
+              });
+          } else {
+              // Light theme
+              document.body.style.backgroundColor = "#f2f2f2";
+              document.body.style.color = "#333";
+              container.style.backgroundColor = "#e3e3e3";
+              container1.style.backgroundColor = "#f2f2f2";
+              container2.style.backgroundColor = "#f2f2f2";
+              container3.style.backgroundColor = "#f2f2f2";
+              swiperContainer.style.backgroundColor = "#f2f2f2";
+              swiperSlide.style.backgroundColor = "#e3e3e3";
+              Textr.style.backgroundColor = "#ababab";
+              Mes.style.backgroundColor = "#f2f2f2";
+              swiperContainer.style.boxShadow = "0 5px 15px rgba(190, 190, 190, 0.3), 0 -5px 15px rgba(190, 190, 190, 0.3)";
+              const swiperSlides = document.querySelectorAll(".swiper-slide");
+              swiperSlides.forEach((slide) => {
+                  slide.style.backgroundColor = "#e3e3e3"; // Adjust to your desired light theme color
+              });
+          }
+      });
+
+      function submitForm() {
+          document.getElementById("success-message").style.display = "block";
+          return false;
+      }
+    </script>
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".mySwiper", {
